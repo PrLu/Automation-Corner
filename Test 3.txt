@@ -2,4 +2,3 @@ Hi i am manasa
 
 i am learning How to push and pull the changes.
 
-i am learning how to add entire file present in directory.
