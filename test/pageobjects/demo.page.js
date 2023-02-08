@@ -1,4 +1,4 @@
-
+const testData = require('../resources/testData.json')
 class demo{
 // fname //*[@placeholder="First Name"]
 //lname //*[@placeholder="Last Name"]
@@ -20,16 +20,29 @@ class demo{
     get submit(){
         return $('#submitbtn')
     }
+    // get skills(){
+    //     return 
+    // }
     launchUrl(){
-        return browser.url('https://demo.automationtesting.in/Register.html')
+        return browser.url(testData.url);
     }
     async fillTheForm(){
         await this.fname.waitForDisplayed();
         await this.fname.waitForEnabled();
-        await this.fname.setValue("Prem");
-        await this.lname.setValue("Padayachi");
-        await this.address.setValue("Address");
+        await this.fname.setValue(testData.firstName);
+        await browser.pause(1000);
+        await this.lname.setValue(testData.lastName);
+        await browser.pause(1000);
+        await this.address.setValue(testData.address);
+        await browser.pause(1000);
         await this.submit.click();
+        await browser.pause(2000);
+        await $('#Skills').selectByAttribute("value","Data Analytics");
+        await browser.pause(6000);
+        await $('#Skills').selectByIndex(3);
+        await browser.pause(6000);
+        await $('#Skills').selectByVisibleText("C");
+        await browser.pause(6000);
     }
 }
 module.exports = new demo();
