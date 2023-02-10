@@ -60,7 +60,12 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
-        acceptInsecureCerts: true
+        acceptInsecureCerts: true,
+        'bstack:options': {
+            'projectName': 'Your static Test Observability Project name goes here',
+            'buildName': 'Your static build name goes here',
+            'buildTag': 'Any build tag goes here'
+        }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -113,7 +118,10 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    user: process.env.BROWSERSTACK_USERNAME || "prempadayachi1",
+    key: process.env.BROWSERSTACK_ACCESS_KEY || "21WTD5qhrgaWivqxS2xa",
+    host: 'hub.browserstack.com',
+    services: ['chromedriver',['browserstack', { browserstackLocal: true }]],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber

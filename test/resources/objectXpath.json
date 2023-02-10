@@ -1,0 +1,10 @@
+{
+    "demoPage":{
+        "firstName_tBox": "#basicBootstrapForm > div:nth-child(1) > div:nth-child(2) > input",
+        "lastName_tBox" : "//*[@placeholder='Last Name']",
+        "address_tBox" : "//*[@ng-model='Adress']",
+        "submit_btn" : "#submitbtn",
+        "language_cmBox":"#msdd"
+
+    }
+}

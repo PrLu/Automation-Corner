@@ -1,4 +1,5 @@
 const testData = require('../resources/testData.json')
+const objXpath = require('../resources/objectXpath.json')
 class demo{
 // fname //*[@placeholder="First Name"]
 //lname //*[@placeholder="Last Name"]
@@ -8,17 +9,24 @@ class demo{
     //     return $('elemtent or locator or xpath')
     // }
     get fname(){
-        return $('#basicBootstrapForm > div:nth-child(1) > div:nth-child(2) > input')
+        return $(objXpath.demoPage.firstName_tBox)
     }
     
     get lname(){
-        return $('//*[@placeholder="Last Name"]')
+        return $(objXpath.demoPage.lastName_tBox)
     }
     get address(){
-        return $('//*[@ng-model="Adress"]')
+        return $(objXpath.demoPage.address_tBox)
     }
     get submit(){
-        return $('#submitbtn')
+        return $(objXpath.demoPage.submit_btn)
+    }
+    // get test(){
+    //     return $(demoVar);
+    // }
+
+    get lang(){
+        return $(objXpath.demoPage.language_cmBox)
     }
     // get skills(){
     //     return 
@@ -37,12 +45,13 @@ class demo{
         await browser.pause(1000);
         await this.submit.click();
         await browser.pause(2000);
+        await this.lang.click();
         await $('#Skills').selectByAttribute("value","Data Analytics");
-        await browser.pause(6000);
+        await browser.pause(2000);
         await $('#Skills').selectByIndex(3);
-        await browser.pause(6000);
+        await browser.pause(2000);
         await $('#Skills').selectByVisibleText("C");
-        await browser.pause(6000);
+        await browser.pause(2000);
     }
 }
 module.exports = new demo();
